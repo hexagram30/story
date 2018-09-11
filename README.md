@@ -1,6 +1,6 @@
 # hexagram30/story
 
-*TBD*
+*Plot and encounter generation for use in creating hexagram30 narratives*
 
 [![][logo]][logo-large]
 

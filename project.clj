@@ -16,7 +16,7 @@
        "\u001B[35m]\u001B[33m λ\u001B[m=> "))
 
 (defproject hexagram30/story "0.1.0-SNAPSHOT"
-  :description "TBD"
+  :description "Plot and encounter generation for use in creating hexagram30 narratives"
   :url "https://github.com/hexagram30/story"
   :license {
     :name "Apache License, Version 2.0"
