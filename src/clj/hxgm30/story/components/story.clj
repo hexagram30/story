@@ -83,6 +83,10 @@
   [system]
   (util/percent-> (random/float system) lookups/wilderness-goals))
 
+(defn select-adventure-goal
+  [system]
+  (util/percent-> (random/float system) lookups/adventure-goals))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;   Component Lifecycle Implementation   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
