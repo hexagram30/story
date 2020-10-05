@@ -1,6 +1,6 @@
 # hexagram30/story
 
-*The Hexagram30 MUSH story / game narrative format and parser*
+*The Hexagram30 MUSH story / game narrative format definition, parser, and tools*
 
 [![][logo]][logo-large]
 
