@@ -1,6 +1,6 @@
 # hexagram30/story
 
-*Plot and encounter generation for use in creating hexagram30 narratives*
+*The Hexagram30 MUSH story / game narrative format and parser*
 
 [![][logo]][logo-large]
 
@@ -32,7 +32,7 @@ service's ["About" page][libera-about].
 ## License
 
 ```
-Copyright © 2018, Hexagram30 <hexagram30@cnbb.games>
+Copyright © 2018-2020, Hexagram30 <hexagram30@cnbb.games>
 
 Apache License, Version 2.0
 ```
