@@ -1,21 +1,36 @@
-# hexagram30/story
+# hxgm30.story
+
+[![Build Status][gh-actions-badge]][gh-actions]
+[![LFE Versions][lfe-badge]][lfe]
+[![Erlang Versions][erlang-badge]][versions]
+[![Tag][github-tag-badge]][github-tag]
+
+[![Project Logo][logo]][logo-large]
 
 *The Hexagram30 MUSH story / game narrative format definition, parser, and tools*
 
-[![][logo]][logo-large]
+##### Table of Contents
 
+* [About](#about-)
+* [Dependencies](#dependencies-)
+* [Usage](#usage-)
+* [Donating](#donating-)
+* [License](#license-)
 
-## About
+## About [&#x219F;](#table-of-contents)
+
+TBD
+
+## Dependencies [&#x219F;](#table-of-contents)
+
+TBD
+
+## Usage [&#x219F;](#table-of-contents)
 
 TBD
 
 
-## Usage
-
-TBD
-
-
-## Donating
+## Donating [&#x219F;](#table-of-contents)
 
 A donation account for supporting development on this project has been set up
 on Liberapay here:
@@ -29,7 +44,7 @@ service's ["About" page][libera-about].
 [libera-about]: https://liberapay.com/about/
 
 
-## License
+## License [&#x219F;](#table-of-contents)
 
 ```
 Copyright © 2018-2020, Hexagram30 <hexagram30@cnbb.games>
@@ -41,4 +56,12 @@ Apache License, Version 2.0
 
 [logo]: https://raw.githubusercontent.com/hexagram30/resources/master/branding/logo/h30-logo-2-long-with-text-x695.png
 [logo-large]: https://raw.githubusercontent.com/hexagram30/resources/master/branding/logo/h30-logo-2-long-with-text-x3440.png
-[comp-event]: https://github.com/hexagram30/hexagramMUSH/blob/master/src/hexagram30/mush/components/event.clj
+[github]: https://github.com/hexagram30/story
+[gh-actions-badge]: https://github.com/hexagram30/story/workflows/ci%2Fcd/badge.svg
+[gh-actions]: https://github.com/hexagram30/story/actions
+[lfe]: https://github.com/rvirding/lfe
+[lfe-badge]: https://img.shields.io/badge/lfe-2.0-blue.svg
+[erlang-badge]: https://img.shields.io/badge/erlang-19%20to%2023-blue.svg
+[versions]: https://github.com/hexagram30/story/blob/master/.github/workflows/cicd.yml
+[github-tag]: https://github.com/hexagram30/story/tags
+[github-tag-badge]: https://img.shields.io/github/tag/hexagram30/story.svg

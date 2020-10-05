@@ -1,6 +1,6 @@
 {application, 'hxgm30.story',
  [{description, "The Hexagram30 MUSH story / game narrative format definition, parser, and tools"},
-  {vsn, 1.0.0-dev},
+  {vsn, "1.0.0-dev"},
   {registered, []},
   {applications,
    [kernel,
