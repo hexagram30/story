@@ -4,15 +4,14 @@
 == Default Content
 
 You are in a large, low-lit, warm room. The floor and walls are soft but firm,
-with a bit of a bounce. There is a distinctive odor about the place
-
+with a bit of a bounce. There is a distinctive odor about the place.
 
 == Exits
 
 * link:2.adoc[inwards]
+* link:3.adoc[down]
 
 == Items
 
 
 == Media
-
