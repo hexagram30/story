@@ -1,7 +1,7 @@
 (defmodule hxgm30.story.format.parser
   (export
    (parse-file 1)
-   (metadata 1)
+   (scan 1) (scan 2)
    ))
 
 (defun parse-file (filename)
@@ -25,16 +25,18 @@
   ((`#(paragraph ,_ ,desc ,_) (= `#m(last-section #"Default Content") acc))
    (mset acc #"description" desc))
   ((`#(list ,_ ,exits-data ,_) (= `#m(last-section #"Exits") acc))
-   (mset acc #"exits" (scan exits-data #m(last-section #"Exits"))))
-  ((`#(list_item ,_ ,exit-data ,_) (= `#m(last-section #"Exits") acc))
-    (scan exit-data acc))
-  ((`#(paragraph ,_ (#(link #m(target ,file) ,dir ,_)) ,_) (= `#m(last-section #"Exits") acc))
-   (let ((`(,id ,_ext) (re:split file "\\.")))
-     (maps:merge acc `#m(,dir ,(binary_to_integer id)))))
+   (let ((acc-exits (maps:get #"exits" acc #m())))
+     (mset acc #"exits" (maps:merge acc-exits (scan-links exits-data)))))
   ((_ acc)
    acc))
 
-;; XXX the above still isn't there yet ... not getting all the exits
+(defun scan-links
+  ((`#(list_item ,_ ,data ,_))
+   (scan-links data))
+  ((`#(paragraph ,_ (#(link #m(target ,file) ,label ,_)) ,_))
+   (let ((`(,id ,_) (re:split file "\\.")))
+     `#m(,label ,(binary_to_integer id))))
+  ((_) #m()))
 
 (defun metadata-filter
   ((`#(section_title ,(= `#m(level 0) metadata) ,_ ,_))
