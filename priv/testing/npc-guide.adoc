@@ -1,0 +1,14 @@
+[id=1, type=npc, role=guide]
+= Myka
+
+== Default Content
+
+You approach the vaguely hominid-shapped mushroom individual whose name has been given as "Myka". Their body language is hard to read, but from what you can gather their posture seems to indicate they are used to acting as a resource for curious travelers.
+
+After a nod and greeting, Myka offers you a few conversation starters.
+
+== Topics
+
+* link:npcs/myka/1.adoc["Where are we?" | where]
+* link:npcs/myka/1.adoc["What is this place?" | what]
+* link:npcs/myka/1.adoc["Tell me about yourself ..." | myka]

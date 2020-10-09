@@ -1,9 +1,31 @@
 (defmodule hxgm30.story.parser-tests
-  (behaviour ltest-unit))
+  (behaviour ltest-unit)
+  (export all))
 
 (include-lib "ltest/include/ltest-macros.lfe")
 
 (defun test-file () "priv/testing/simple-area.adoc")
+
+(deftestskip parse-area
+  'not-implemented)
+
+(deftestskip parse-character-area
+  'not-implemented)
+
+(deftestskip parse-temporal-area
+  'not-implemented)
+
+(deftest parse-book
+  (let* ((test-file "priv/testing/book.adoc")
+         (data (hxgm30.story.parser:file test-file)))
+    (is-equal #"100" (mref data #"id"))
+    (is-equal #"book" (mref data #"type"))
+    (is-equal #"The Mykonomicon" (mref data #"name"))
+    (is-equal '(#m(#"cmd" #"open" #"id" 2 #"text" #"open the book"))
+              (mref data #"actions"))))
+
+(deftestskip parse-npc
+  'not-implemented)
 
 (deftest parse-file
   (let ((data (hxgm30.story.parser:file (test-file))))
