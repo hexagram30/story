@@ -10,30 +10,39 @@
     (is-equal #"1" (mref data #"id"))
     (is-equal #"area" (mref data #"type"))
     (is-equal #"The MUSH Room" (mref data #"name"))
-    (is-equal #"You are in a large, low-lit, warm room. The floor and walls are soft but firm, with a bit of a bounce. There is a distinctive odor about the place." (mref data #"description"))
-    (is-equal #m(#"inwards" 2 #"down" 3) (mref data #"exits"))))
+    (is-equal #"You are in a large, low-lit, warm room. The floor and walls are soft but firm, with a bit of a bounce. There is a distinctive odor about the place. The only features of interest seem to be some sort of structure in the center of the room. Oh, and the trap down next to you."
+              (mref data #"description"))
+    (is-equal '(#m(#"id" 2 #"cmd" #"inwards" #"text" #"Head toward the center")
+                  #m(#"id" 3 #"cmd" #"down" #"text" #"Climb through the trap door"))
+              (mref data #"exits"))))
 
 (defun test-string ()
-  (++ "[id=1, type=area]\n= The MUSH Room\n\n== Default Content\n\nYou are in a large, low-lit, warm room. The floor and walls are soft but firm,\nwith a bit of a bounce. There is a distinctive odor about the place.\n\n== Exits\n\n* link:2.adoc[inwards]\n* link:3.adoc[down]\n\n== Items\n\n\n== Media\n"))
+  (++ "[id=1, type=area]\n= The MUSH Room\n\n== Default Content\n\nYou are in a large, low-lit, warm room. The floor and walls are soft but firm,\nwith a bit of a bounce. There is a distinctive odor about the place. The only\nfeatures of interest seem to be some sort of structure in the center of the\nroom. Oh, and the trap down next to you.\n\n== Exits\n\n* link:areas/starting-zones/faction-1/2.adoc[Head toward the center | inwards]\n* link:areas/starting-zones/faction-1/3.adoc[Climb through the trap door | down]\n"))
 
 (deftest parse-string
   (let ((data (hxgm30.story.parser:string (test-string))))
     (is-equal #"1" (mref data #"id"))
     (is-equal #"area" (mref data #"type"))
     (is-equal #"The MUSH Room" (mref data #"name"))
-    (is-equal #"You are in a large, low-lit, warm room. The floor and walls are soft but firm, with a bit of a bounce. There is a distinctive odor about the place." (mref data #"description"))
-    (is-equal #m(#"inwards" 2 #"down" 3) (mref data #"exits"))))
+    (is-equal #"You are in a large, low-lit, warm room. The floor and walls are soft but firm, with a bit of a bounce. There is a distinctive odor about the place. The only features of interest seem to be some sort of structure in the center of the room. Oh, and the trap down next to you."
+              (mref data #"description"))
+    (is-equal '(#m(#"id" 2 #"cmd" #"inwards" #"text" #"Head toward the center")
+                  #m(#"id" 3 #"cmd" #"down" #"text" #"Climb through the trap door"))
+              (mref data #"exits"))))
 
 (defun test-bitstring ()
-  (++ #"[id=1, type=area]\n= The MUSH Room\n\n== Default Content\n\nYou are in a large, low-lit, warm room. The floor and walls are soft but firm,\nwith a bit of a bounce. There is a distinctive odor about the place.\n\n== Exits\n\n* link:2.adoc[inwards]\n* link:3.adoc[down]\n\n== Items\n\n\n== Media\n"))
+  (++ #"[id=1, type=area]\n= The MUSH Room\n\n== Default Content\n\nYou are in a large, low-lit, warm room. The floor and walls are soft but firm,\nwith a bit of a bounce. There is a distinctive odor about the place. The only\nfeatures of interest seem to be some sort of structure in the center of the\nroom. Oh, and the trap down next to you.\n\n== Exits\n\n* link:areas/starting-zones/faction-1/2.adoc[Head toward the center | inwards]\n* link:areas/starting-zones/faction-1/3.adoc[Climb through the trap door | down]\n"))
 
 (deftest parse-bitstring
   (let ((data (hxgm30.story.parser:string (test-bitstring))))
     (is-equal #"1" (mref data #"id"))
     (is-equal #"area" (mref data #"type"))
     (is-equal #"The MUSH Room" (mref data #"name"))
-    (is-equal #"You are in a large, low-lit, warm room. The floor and walls are soft but firm, with a bit of a bounce. There is a distinctive odor about the place." (mref data #"description"))
-    (is-equal #m(#"inwards" 2 #"down" 3) (mref data #"exits"))))
+    (is-equal #"You are in a large, low-lit, warm room. The floor and walls are soft but firm, with a bit of a bounce. There is a distinctive odor about the place. The only features of interest seem to be some sort of structure in the center of the room. Oh, and the trap down next to you."
+              (mref data #"description"))
+    (is-equal '(#m(#"id" 2 #"cmd" #"inwards" #"text" #"Head toward the center")
+                  #m(#"id" 3 #"cmd" #"down" #"text" #"Climb through the trap door"))
+              (mref data #"exits"))))
 
 (deftest parse-label
   (let* ((label #"\"Tell me about yourself ...\" | myka")

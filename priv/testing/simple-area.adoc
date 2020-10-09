@@ -4,14 +4,11 @@
 == Default Content
 
 You are in a large, low-lit, warm room. The floor and walls are soft but firm,
-with a bit of a bounce. There is a distinctive odor about the place.
+with a bit of a bounce. There is a distinctive odor about the place. The only
+features of interest seem to be some sort of structure in the center of the
+room. Oh, and the trap down next to you.
 
 == Exits
 
-* link:2.adoc[inwards]
-* link:3.adoc[down]
-
-== Items
-
-
-== Media
+* link:areas/starting-zones/faction-1/2.adoc[Head toward the center | inwards]
+* link:areas/starting-zones/faction-1/3.adoc[Climb through the trap door | down]
