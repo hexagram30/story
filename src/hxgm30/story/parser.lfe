@@ -2,10 +2,14 @@
   (export
    (file 1)
    (scan 1) (scan 2)
-   (scan-links 1) (scan-links 2)))
+   (scan-links 1) (scan-links 2)
+   (string 1)))
 
 (defun file (filename)
   (scan (asciideck:parse_file filename)))
+
+(defun string (data)
+  (scan (asciideck:parse data)))
 
 (defun scan (parsed)
   (scan parsed #m()))
