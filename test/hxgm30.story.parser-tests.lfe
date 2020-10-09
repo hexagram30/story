@@ -4,8 +4,6 @@
 
 (include-lib "ltest/include/ltest-macros.lfe")
 
-(defun test-file () "priv/testing/simple-area.adoc")
-
 (deftestskip parse-area
   'not-implemented)
 
@@ -24,11 +22,21 @@
     (is-equal '(#m(#"cmd" #"open" #"id" 2 #"text" #"open the book"))
               (mref data #"actions"))))
 
-(deftestskip parse-npc
-  'not-implemented)
+(deftest parse-npc
+  (let* ((test-file "priv/testing/npc-guide.adoc")
+         (data (hxgm30.story.parser:file test-file)))
+    (is-equal #"200" (mref data #"id"))
+    (is-equal #"npc" (mref data #"type"))
+    (is-equal #"guide" (mref data #"role"))
+    (is-equal #"Myka" (mref data #"name"))
+    (is-equal '(#m(#"cmd" #"where" #"id" 1 #"text" #"\"Where are we?\"")
+                #m(#"cmd" #"what" #"id" 2 #"text" #"\"What is this place?\"")
+                #m(#"cmd" #"myka" #"id" 3 #"text" #"\"Tell me about yourself ...\""))
+              (mref data #"topics"))))
 
 (deftest parse-file
-  (let ((data (hxgm30.story.parser:file (test-file))))
+  (let* ((test-file "priv/testing/simple-area.adoc")
+         (data (hxgm30.story.parser:file test-file)))
     (is-equal #"1" (mref data #"id"))
     (is-equal #"area" (mref data #"type"))
     (is-equal #"The MUSH Room" (mref data #"name"))

@@ -39,6 +39,9 @@
   ((`#(list ,_ ,actions-data ,_) (= `#m(last-section #"Actions") acc))
    (let ((acc-actions (maps:get #"actions" acc '())))
      (mset acc #"actions" (lists:append acc-actions (scan-links actions-data)))))
+  ((`#(list ,_ ,topics-data ,_) (= `#m(last-section #"Topics") acc))
+   (let ((acc-topics (maps:get #"topics" acc '())))
+     (mset acc #"topics" (lists:append acc-topics (scan-links topics-data)))))
   ((_ acc)
    acc))
 
