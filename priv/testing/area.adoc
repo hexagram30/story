@@ -14,7 +14,7 @@ There is one slight hint of light to the north which you believe to be the exit 
 [time=night]
 == Content
 
-In fact, no almost about it. It is pitch black in here.
+In fact, no "almost" about it. It is pitch black in here.
 
 [attribute=perception,threshold=+3]
 == Content
