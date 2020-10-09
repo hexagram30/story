@@ -1,9 +1,13 @@
 (defmodule hxgm30.story.parser
   (export
    (file 1)
+   (parse-label 1)
    (scan 1) (scan 2)
    (scan-links 1) (scan-links 2)
-   (string 1)))
+   (string 1)
+   (trim 1)
+   (triml 1)
+   (trimr 1)))
 
 (defun file (filename)
   (scan (asciideck:parse_file filename)))
@@ -44,9 +48,44 @@
    (scan-links data acc))
   ((`(#(paragraph ,_ (#(link #m(target ,file) ,label ,_)) ,_)) acc)
    ;;(io:format "Got paragraph ...~n" '())
+   ;; XXX use file* libs to get filename without extension, ignoring the path
    (let ((`(,id ,_) (re:split file "\\.")))
      ;;(io:format "Got <label, id>: <~p, ~p>~n" `(,label ,id))
      (maps:merge acc `#m(,label ,(binary_to_integer id)))))
   ((data acc)
    (lfe_io:format "Got unexpected data:~n~p~nacc:~p~n" `(,data ,acc))
    #m()))
+
+(defun parse-label
+  ((label) (when (is_binary label))
+   (parse-label (re:split label "\\|")))
+  ((`(,text ,command))
+   `#m(#"text" ,(trim text)
+       #"cmd" ,(trim command)))
+  ((data)
+    `#(error "Unexpected input:" ,data)))
+
+(defun whitespace () "[\s\t\n\r]")
+
+(defun trim (bitstring)
+  (triml (trimr bitstring)))
+
+(defun triml (bitstring)
+  (case (re:replace bitstring
+                    (++ "^" (whitespace) "+")
+                    ""
+                    '(global #(return binary)))
+    ('() #"")
+    ('(()) #"")
+    (`(() . ,match) match)
+    (nomatch nomatch)))
+
+(defun trimr (bitstring)
+  (case (re:replace bitstring
+                    (++ (whitespace) "+$")
+                    ""
+                    '(global #(return binary)))
+    ('() #"")
+    ('(()) #"")
+    (`(,match ,_) match)
+    (nomatch nomatch)))
