@@ -1,4 +1,4 @@
-[id=1, type=npc, role=guide]
+[id=200, type=npc, role=guide]
 = Myka
 
 == Default Content
@@ -10,5 +10,5 @@ After a nod and greeting, Myka offers you a few conversation starters.
 == Topics
 
 * link:npcs/myka/1.adoc["Where are we?" | where]
-* link:npcs/myka/1.adoc["What is this place?" | what]
-* link:npcs/myka/1.adoc["Tell me about yourself ..." | myka]
+* link:npcs/myka/2.adoc["What is this place?" | what]
+* link:npcs/myka/3.adoc["Tell me about yourself ..." | myka]
