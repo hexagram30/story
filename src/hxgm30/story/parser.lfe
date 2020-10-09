@@ -33,14 +33,17 @@
    (mset acc #"description" desc))
   ((`#(list ,_ ,exits-data ,_) (= `#m(last-section #"Exits") acc))
    ;;(io:format "Got list ...~n" '())
-   (let ((acc-exits (maps:get #"exits" acc #m())))
+   (let ((acc-exits (maps:get #"exits" acc '())))
      ;;(lfe_io:format "Got acc-exits: ~p~n" `(,acc-exits))
-     (mset acc #"exits" (maps:merge acc-exits (scan-links exits-data)))))
+     (mset acc #"exits" (lists:append acc-exits (scan-links exits-data)))))
+  ((`#(list ,_ ,actions-data ,_) (= `#m(last-section #"Actions") acc))
+   (let ((acc-actions (maps:get #"actions" acc '())))
+     (mset acc #"actions" (lists:append acc-actions (scan-links actions-data)))))
   ((_ acc)
    acc))
 
 (defun scan-links (data)
-  (lists:foldl #'scan-links/2 #m() data))
+  (lists:foldl #'scan-links/2 '() data))
 
 (defun scan-links
   ((`#(list_item ,_ ,data ,_) acc)
@@ -48,13 +51,13 @@
    (scan-links data acc))
   ((`(#(paragraph ,_ (#(link #m(target ,file) ,label ,_)) ,_)) acc)
    ;;(io:format "Got paragraph ...~n" '())
-   ;; XXX use file* libs to get filename without extension, ignoring the path
-   (let ((`(,id ,_) (re:split file "\\.")))
+   (let ((id (filename:basename (filename:rootname file))))
      ;;(io:format "Got <label, id>: <~p, ~p>~n" `(,label ,id))
-     (maps:merge acc `#m(,label ,(binary_to_integer id)))))
+     (lists:append acc `(,(maps:merge (parse-label label)
+                                      `#m(#"id" ,(binary_to_integer id)))))))
   ((data acc)
    (lfe_io:format "Got unexpected data:~n~p~nacc:~p~n" `(,data ,acc))
-   #m()))
+   '()))
 
 (defun parse-label
   ((label) (when (is_binary label))
