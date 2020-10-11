@@ -1,9 +1,5 @@
 (defmodule hxgm30.story
-  (export (my-fun 0)))
+  (export all))
 
-;;; -----------
-;;; library API
-;;; -----------
-
-(defun my-fun ()
-  'hello-world)
+(defun placeholder ()
+  'delete-me)
