@@ -1,4 +1,4 @@
-[id=1, type=area, time-sensitive=true attribute-sensitive=true, append-content=true]
+[id=42, type=area, time-sensitive=true, attribute-sensitive=true, append-content=true]
 = Cavern Great Room
 
 [default=true]
@@ -23,8 +23,8 @@ Against all odds, you detect something interesting here: by listening for echos 
 
 == Exits
 
-* link:areas/forest/101.adoc[cavern exit | north, n]
-* link:areas/caves/system2/.adoc[descend deeper | down]
+* link:areas/forest/101.adoc[cavern exit | north]
+* link:areas/caves/system2/301.adoc[descend deeper | down]
 
 == Items
 

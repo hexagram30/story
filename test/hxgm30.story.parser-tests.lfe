@@ -4,14 +4,32 @@
 
 (include-lib "ltest/include/ltest-macros.lfe")
 
-(deftestskip parse-area
-  'not-implemented)
+(deftest parse-basic-area
+  (let* ((test-file "priv/testing/area.adoc")
+         (data (hxgm30.story.parser:file test-file)))
+    (is-equal #"42" (mref data #"id"))
+    (is-equal #"area" (mref data #"type"))
+    (is-equal #"true" (mref data #"time-sensitive"))
+    (is-equal #"true" (mref data #"attribute-sensitive"))
+    (is-equal #"true" (mref data #"append-content"))
+    (is-equal #"Cavern Great Room" (mref data #"name"))
+    (is-equal #"You are in a large, almost completely dark cavern."
+              (mref data #"description"))
+    (is-equal '(#m(#"id" 101 #"cmd" #"north" #"text" #"cavern exit")
+                  #m(#"id" 301 #"cmd" #"down" #"text" #"descend deeper"))
+              (mref data #"exits"))))
 
-(deftestskip parse-character-area
-  'not-implemented)
+(deftestskip parse-area-items
+  'tbd)
 
-(deftestskip parse-temporal-area
-  'not-implemented)
+(deftestskip parse-area-occupants
+  'tbd)
+
+(deftestskip parse-time-sensitive-area
+  'tbd)
+
+(deftestskip parse-character-sensitive-area
+  'tbd)
 
 (deftest parse-book
   (let* ((test-file "priv/testing/book.adoc")
