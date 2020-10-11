@@ -1,6 +1,7 @@
 .eunit
 rebar/*
 .rebar/*
+rebar.lock
 rebar3.crashdump
 deps
 *.sublime-project
