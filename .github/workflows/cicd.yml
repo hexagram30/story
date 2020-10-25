@@ -36,7 +36,7 @@ jobs:
 #    - name: Dialyzer
 #      run: rebar3 dialyzer
     - name: Run Tests
-      run: rebar3 as test eunit
+      run: rebar3 as test lfe ltest
     - name: Test Coverage
       run: rebar3 as tests do proper -c, cover -v --min_coverage=0
     - name: Notify CI/CD Slack Channel
