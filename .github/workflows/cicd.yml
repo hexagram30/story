@@ -24,7 +24,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Compile
-      run: rebar3 compile
+      run: DEBUG=1 rebar3 compile
     - name: Xref Checks
       run: rebar3 xref
 #    - name: Dialyzer

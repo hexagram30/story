@@ -45,8 +45,7 @@
   (toml:foldk section-path
               (lambda (_section k v acc)
                 (maps:merge acc
-                            `#m(,(list_to_binary k)
-                                ,(toml-> v))))
+                            `#m(,k ,(toml-> v))))
               #m()
               toml))
 
@@ -58,6 +57,7 @@
                   (assoc-in acc x (section->map toml x))))
                #m()
                (get-paths toml)))
+
 
 ;; Story API
 
