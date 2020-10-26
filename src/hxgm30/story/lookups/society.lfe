@@ -4,35 +4,39 @@
    (leader-types 0)))
 
 (defun governments ()
- '([0 (/ 8 100.0)] autocracy
-   [(/ 8 100.0) (/ 13 100.0)] bureaucracy
-   [(/ 13 100.0) (/ 19 100.0)] confederacy
-   [(/ 19 100.0) (/ 22 100.0)] democracy
-   [(/ 22 100.0) (/ 27 100.0)] dictatorship
-   [(/ 27 100.0) (/ 42 100.0)] feudalism
-   [(/ 42 100.0) (/ 44 100.0)] gerontocracy
-   [(/ 44 100.0) (/ 53 100.0)] hierarchy
-   [(/ 53 100.0) (/ 56 100.0)] magocracy
-   [(/ 56 100.0) (/ 58 100.0)] matriarchy
-   [(/ 58 100.0) (/ 64 100.0)] militocracy
-   [(/ 64 100.0) (/ 74 100.0)] monarchy
-   [(/ 74 100.0) (/ 78 100.0)] oligarchy
-   [(/ 78 100.0) (/ 80 100.0)] patriarchy
-   [(/ 80 100.0) (/ 83 100.0)] meritocracy
-   [(/ 83 100.0) (/ 85 100.0)] plutocracy
-   [(/ 85 100.0) (/ 92 100.0)] republic
-   [(/ 92 100.0) (/ 94 100.0)] satrapy
-   [(/ 94 100.0) (/ 95 100.0)] kleptocracy
-   [(/ 95 100.0) 1.0] theocracy))
+  (let ((dice 100))
+    `(#(dice ,dice)
+      #(data (#((0            ,(/ 8 dice))  autocracy)
+              #((,(/ 8 dice)  ,(/ 13 dice)) bureaucracy)
+              #((,(/ 13 dice) ,(/ 19 dice)) confederacy)
+              #((,(/ 19 dice) ,(/ 22 dice)) democracy)
+              #((,(/ 22 dice) ,(/ 27 dice)) dictatorship)
+              #((,(/ 27 dice) ,(/ 42 dice)) feudalism)
+              #((,(/ 42 dice) ,(/ 44 dice)) gerontocracy)
+              #((,(/ 44 dice) ,(/ 53 dice)) hierarchy)
+              #((,(/ 53 dice) ,(/ 56 dice)) magocracy)
+              #((,(/ 56 dice) ,(/ 58 dice)) matriarchy)
+              #((,(/ 58 dice) ,(/ 64 dice)) militocracy)
+              #((,(/ 64 dice) ,(/ 74 dice)) monarchy)
+              #((,(/ 74 dice) ,(/ 78 dice)) oligarchy)
+              #((,(/ 78 dice) ,(/ 80 dice)) patriarchy)
+              #((,(/ 80 dice) ,(/ 83 dice)) meritocracy)
+              #((,(/ 83 dice) ,(/ 85 dice)) plutocracy)
+              #((,(/ 85 dice) ,(/ 92 dice)) republic)
+              #((,(/ 92 dice) ,(/ 94 dice)) satrapy)
+              #((,(/ 94 dice) ,(/ 95 dice)) kleptocracy)
+              #((,(/ 95 dice) 1.0)          theocracy))))))
 
 (defun leader-types ()
- '([0 (/ 1 6.0)] political
-   [(/ 1 6.0) (/ 2 6.0)] religious
-   [(/ 2 6.0) (/ 3 6.0)] military
-   [(/ 3 6.0) (/ 3.5 6.0)] crime
-   [(/ 3.5 6.0) (/ 4 6.0)] underworld
-   [(/ 4 6.0) (/ 4.5 6.0)] art
-   [(/ 4.5 6.0) (/ 5 6.0)] culture
-   [(/ 5 6.0) (/ 5.33 6.0)] philosophy
-   [(/ 5.33 6.0) (/ 5.67 6.0)] learning
-   [(/ 5.67 6.0) 1.0] magic))
+  (let ((dice 6))
+    `(#(dice ,dice)
+      #(data (#((0             ,(/ 1    6.0)) political)
+              #((,(/ 1    6.0) ,(/ 2    6.0)) religious)
+              #((,(/ 2    6.0) ,(/ 3    6.0)) military)
+              #((,(/ 3    6.0) ,(/ 3.5  6.0)) criminal)
+              #((,(/ 3.5  6.0) ,(/ 4    6.0)) underworld)
+              #((,(/ 4    6.0) ,(/ 4.5  6.0)) arts-based)
+              #((,(/ 4.5  6.0) ,(/ 5    6.0)) culture)
+              #((,(/ 5    6.0) ,(/ 5.33 6.0)) philosophical)
+              #((,(/ 5.33 6.0) ,(/ 5.67 6.0)) learning)
+              #((,(/ 5.67 6.0) 1.0)           magical))))))
