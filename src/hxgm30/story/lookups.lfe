@@ -43,6 +43,15 @@
 
 (defun lookup-func (id)
   (case id
-    ('society:governments #'hxgm30.story.lookups.society:governments/0)
-    ('society:leader-types #'hxgm30.story.lookups.society:leader-types/0)
+    ;; events
+    ('events:cataclysm #'hxgm30.story.lookups.events:cataclysms/0)
+    ('events:disaster #'hxgm30.story.lookups.events:disasters/0)
+    ('events:discovery #'hxgm30.story.lookups.events:discoveries/0)
+    ('events:extinction #'hxgm30.story.lookups.events:extinctions/0)
+    ('events:invasion #'hxgm30.story.lookups.events:invasions/0)
+    ('events:new-organization #'hxgm30.story.lookups.events:new-organizations/0)
+    ('events:world-shaking #'hxgm30.story.lookups.events:world-shaking/0)
+    ;; society
+    ('society:government #'hxgm30.story.lookups.society:governments/0)
+    ('society:leader-type #'hxgm30.story.lookups.society:leader-types/0)
     (_ (lambda () 'undefined))))
