@@ -51,6 +51,10 @@
     ('events:invasion #'hxgm30.story.lookups.events:invasions/0)
     ('events:new-organization #'hxgm30.story.lookups.events:new-organizations/0)
     ('events:world-shaking #'hxgm30.story.lookups.events:world-shaking/0)
+    ;; goals
+    ('goals:adventure #'hxgm30.story.lookups.goals:adventures/0)
+    ('goals:dungeon #'hxgm30.story.lookups.goals:dungeons/0)
+    ('goals:wilderness #'hxgm30.story.lookups.goals:wilderness/0)
     ;; society
     ('society:government #'hxgm30.story.lookups.society:governments/0)
     ('society:leader-type #'hxgm30.story.lookups.society:leader-types/0)
