@@ -27,15 +27,34 @@
    (let* ((metadata (maps:without '(0 level) metadata))
           (acc (maps:merge acc metadata)))
      (mset acc #"name" name)))
+  ;;
+  ;; Keep track of when a section heading is scanned
+  ;;
   ((`#(section_title ,(= `#m(level 1) metadata) ,name ,_) acc)
    (mset acc 'last-section (mset metadata 'name name)))
-  ((`#(paragraph ,_ ,desc ,_) (= `#m(last-section #m(name #"Content" #"default" #"true")) acc))
+  ;;
+  ;; Collect the different types of content (descriptions)
+  ;;
+  ((`#(paragraph ,_ ,desc ,_) (= `#m(last-section #m(name #"Content"
+                                                     #"default" #"true")) acc))
    (bombadil:assoc-in acc '(#"description" #"default") desc))
-  ((`#(paragraph ,_ ,desc ,_) (= `#m(last-section #m(name #"Content" #"time" ,time)) acc))
-   (io:format "Acc: ~p~n" `(,acc))
+  ((`#(paragraph ,_ ,desc ,_) (= `#m(last-section #m(name #"Content"
+                                                     #"time" ,time)) acc))
    (clj:-> acc
            (bombadil:assoc-in `(#"description" ,time) desc)
            (mset #"times" (++ (maps:get #"times" acc '()) (list time)))))
+  ((`#(paragraph ,_ ,desc ,_) (= `#m(last-section #m(name #"Content"
+                                                     #"attribute" ,attribute
+                                                     #"min" ,min)) acc))
+   (clj:-> acc
+           (bombadil:assoc-in `(#"description" ,(binary (attribute binary) (min binary)))
+                              desc)
+           (mset #"attributes" (++ (maps:get #"attributes" acc '())
+                                   (list `#m(#"name" ,attribute
+                                             #"min" ,(binary_to_integer min)))))))
+  ;;
+  ;; Collect other types
+  ;;
   ((`#(list ,_ ,exits-data ,_) (= `#m(last-section #m(name #"Exits")) acc))
    (let ((acc-exits (maps:get #"exits" acc '())))
      (mset acc #"exits" (lists:append acc-exits (scan-links exits-data)))))

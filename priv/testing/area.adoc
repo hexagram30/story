@@ -16,7 +16,7 @@ There is one slight hint of light to the north which you believe to be the exit 
 
 In fact, no "almost" about it. It is pitch black in here.
 
-[attribute=perception,threshold=+3]
+[attribute=perception, min=+3]
 == Content
 
 Against all odds, you detect something interesting here: by listening for echos and shuffling around, you manage to bump into a treasure chest.

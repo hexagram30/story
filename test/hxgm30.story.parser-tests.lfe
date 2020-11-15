@@ -4,24 +4,23 @@
 
 (include-lib "ltest/include/ltest-macros.lfe")
 
+(deftestskip parse-area-items
+  'tbd)
+
+(deftestskip parse-area-occupants
+  'tbd)
+
 (deftest parse-basic-area
   (let* ((test-file "priv/testing/area.adoc")
          (data (hxgm30.story.parser:read test-file)))
     (is-equal #"42" (mref data #"id"))
     (is-equal #"area" (mref data #"type"))
-    (is-equal #"true" (mref data #"attribute-sensitive"))
     (is-equal #"Cavern Great Room" (mref data #"name"))
     (is-equal #"You are in a large, almost completely dark cavern."
               (clj:get-in data '(#"description" #"default")))
     (is-equal '(#m(#"id" 101 #"cmd" #"north" #"text" #"cavern exit")
                   #m(#"id" 301 #"cmd" #"down" #"text" #"descend deeper"))
               (mref data #"exits"))))
-
-(deftestskip parse-area-items
-  'tbd)
-
-(deftestskip parse-area-occupants
-  'tbd)
 
 (deftest parse-time-sensitive-area
   (let* ((test-file "priv/testing/area.adoc")
@@ -34,10 +33,17 @@
     (is-equal #"There is one slight hint of light to the north which you believe to be the exit from this system of caves."
               (clj:get-in data '(#"description" #"day")))
     (is-equal #"In fact, no \"almost\" about it. It is pitch black in here."
-              (clj:get-in data '(#"description" #"night")))))    
+              (clj:get-in data '(#"description" #"night")))))
 
-(deftestskip parse-character-sensitive-area
-  'tbd)
+(deftest parse-character-sensitive-area
+   (let* ((test-file "priv/testing/area.adoc")
+          (data (hxgm30.story.parser:read test-file)))
+     (is-equal #"true" (mref data #"attribute-sensitive"))
+     (is-equal #"true" (mref data #"append-content"))
+     (is-equal '(#m(#"min" 3 #"name" #"perception")) (mref data #"attributes"))
+     ;;(is-equal #"" data)
+     (is-equal #"Against all odds, you detect something interesting here: by listening for echos and shuffling around, you manage to bump into a treasure chest."
+              (clj:get-in data '(#"description" #"perception+3")))))
 
 (deftest parse-book
   (let* ((test-file "priv/testing/book.adoc")
