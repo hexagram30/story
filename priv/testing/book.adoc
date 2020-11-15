@@ -1,7 +1,8 @@
 [id=100, type=book]
 = The Mykonomicon
 
-== Default Content
+[default=true]
+== Content
 
 You hold in your hands a mouldy manuscripts of yore, famed for its hidden knowledge of the vasty fungal depths. Spores emenate, almost causally, from every part of it producing a localized gloom that surrounds the immediate vicinity of the tome.
 

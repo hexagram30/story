@@ -1,7 +1,8 @@
 [id=1, type=area]
 = The MUSH Room
 
-== Default Content
+[default=true]
+== Content
 
 You are in a large, low-lit, warm room. The floor and walls are soft but firm,
 with a bit of a bounce. There is a distinctive odor about the place. The only

@@ -1,7 +1,8 @@
 [id=200, type=npc, role=guide]
 = Myka
 
-== Default Content
+[default=true]
+== Content
 
 You approach the vaguely hominid-shapped mushroom individual whose name has been given as "Myka". Their body language is hard to read, but from what you can gather their posture seems to indicate they are used to acting as a resource for curious travelers.
 

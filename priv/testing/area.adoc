@@ -2,7 +2,7 @@
 = Cavern Great Room
 
 [default=true]
-== Default Content
+== Content
 
 You are in a large, almost completely dark cavern. 
 
