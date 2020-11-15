@@ -13,7 +13,7 @@
    (zones 3)))
 
 (defun all-files (story-path)
-  (filelib:wildcard (filename:join story-path "/**/*.a*doc")))
+  (filelib:wildcard (filename:join story-path "**/*.a*doc")))
 
 (defun games (story-path)
   (lists:map #'filename:basename/1 (filelib:wildcard
