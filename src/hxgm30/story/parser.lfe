@@ -79,7 +79,7 @@
    (let ((id (filename:basename (filename:rootname file))))
      ;;(io:format "Got <label, id>: <~p, ~p>~n" `(,label ,id))
      (lists:append acc `(,(maps:merge (parse-label label)
-                                      `#m(#"id" ,(binary_to_integer id)))))))
+                                      `#m(#"dest-id" ,(binary_to_integer id)))))))
   ((data acc)
    (lfe_io:format "Got unexpected data:~n~p~nacc:~p~n" `(,data ,acc))
    '()))

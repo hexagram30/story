@@ -18,8 +18,8 @@
     (is-equal #"Cavern Great Room" (mref data #"name"))
     (is-equal #"You are in a large, almost completely dark cavern."
               (clj:get-in data '(#"description" #"default")))
-    (is-equal '(#m(#"id" 101 #"cmd" #"north" #"text" #"cavern exit")
-                  #m(#"id" 301 #"cmd" #"down" #"text" #"descend deeper"))
+    (is-equal '(#m(#"dest-id" 101 #"cmd" #"north" #"text" #"cavern exit")
+                  #m(#"dest-id" 301 #"cmd" #"down" #"text" #"descend deeper"))
               (mref data #"exits"))))
 
 (deftest parse-time-sensitive-area
@@ -51,7 +51,7 @@
     (is-equal #"100" (mref data #"id"))
     (is-equal #"book" (mref data #"type"))
     (is-equal #"The Mykonomicon" (mref data #"name"))
-    (is-equal '(#m(#"cmd" #"open" #"id" 2 #"text" #"open the book"))
+    (is-equal '(#m(#"cmd" #"open" #"dest-id" 2 #"text" #"open the book"))
               (mref data #"actions"))))
 
 (deftest parse-npc
@@ -61,9 +61,9 @@
     (is-equal #"npc" (mref data #"type"))
     (is-equal #"guide" (mref data #"role"))
     (is-equal #"Myka" (mref data #"name"))
-    (is-equal '(#m(#"cmd" #"where" #"id" 1 #"text" #"\"Where are we?\"")
-                #m(#"cmd" #"what" #"id" 2 #"text" #"\"What is this place?\"")
-                #m(#"cmd" #"myka" #"id" 3 #"text" #"\"Tell me about yourself ...\""))
+    (is-equal '(#m(#"cmd" #"where" #"dest-id" 1 #"text" #"\"Where are we?\"")
+                #m(#"cmd" #"what" #"dest-id" 2 #"text" #"\"What is this place?\"")
+                #m(#"cmd" #"myka" #"dest-id" 3 #"text" #"\"Tell me about yourself ...\""))
               (mref data #"topics"))))
 
 (deftest parse-file
@@ -74,8 +74,8 @@
     (is-equal #"The MUSH Room" (mref data #"name"))
     (is-equal (desc)
               (clj:get-in data '(#"description" #"default")))
-    (is-equal '(#m(#"id" 2 #"cmd" #"inwards" #"text" #"Head toward the center")
-                  #m(#"id" 3 #"cmd" #"down" #"text" #"Climb through the trap door"))
+    (is-equal '(#m(#"dest-id" 2 #"cmd" #"inwards" #"text" #"Head toward the center")
+                  #m(#"dest-id" 3 #"cmd" #"down" #"text" #"Climb through the trap door"))
               (mref data #"exits"))))
 
 (deftest parse-string
@@ -85,8 +85,8 @@
     (is-equal #"The MUSH Room" (mref data #"name"))
     (is-equal (desc)
               (clj:get-in data '(#"description" #"default")))
-    (is-equal '(#m(#"id" 2 #"cmd" #"inwards" #"text" #"Head toward the center")
-                  #m(#"id" 3 #"cmd" #"down" #"text" #"Climb through the trap door"))
+    (is-equal '(#m(#"dest-id" 2 #"cmd" #"inwards" #"text" #"Head toward the center")
+                  #m(#"dest-id" 3 #"cmd" #"down" #"text" #"Climb through the trap door"))
               (mref data #"exits"))))
 
 (deftest parse-bitstring
@@ -96,8 +96,8 @@
     (is-equal #"The MUSH Room" (mref data #"name"))
     (is-equal (desc)
               (clj:get-in data '(#"description" #"default")))
-    (is-equal '(#m(#"id" 2 #"cmd" #"inwards" #"text" #"Head toward the center")
-                  #m(#"id" 3 #"cmd" #"down" #"text" #"Climb through the trap door"))
+    (is-equal '(#m(#"dest-id" 2 #"cmd" #"inwards" #"text" #"Head toward the center")
+                  #m(#"dest-id" 3 #"cmd" #"down" #"text" #"Climb through the trap door"))
               (mref data #"exits"))))
 
 (deftest parse-label
