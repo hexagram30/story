@@ -23,12 +23,14 @@ TBD
 
 ## Dependencies [&#x219F;](#table-of-contents)
 
-TBD
+* [erlang](https://www.erlang.org/)
+* [Rebar3](https://www.rebar3.org/)
 
 ## Usage [&#x219F;](#table-of-contents)
 
-TBD
-
+```
+rebar3 shell --apps hxgm30.story
+```
 
 ## Donating [&#x219F;](#table-of-contents)
 
